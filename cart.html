@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Your Cart</h1>
+
+    <br>
+
+    <table class="cart-table">
+
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+
+        {% for item in cart_items %}
+
+        <tr>
+
+            <td>{{ item.name }}</td>
+
+            <td>₹{{ item.price }}</td>
+
+            <td>
+                <a href="/remove_from_cart/{{ item.id }}"
+                class="btn">
+                    Remove
+                </a>
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <div class="total-box">
+        Total : ₹{{ total }}
+    </div>
+
+    <br>
+
+    <form action="/checkout" method="POST">
+
+        <input type="hidden"
+        name="total_amount"
+        value="{{ total }}">
+
+        <button class="btn">
+            Proceed To Checkout
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

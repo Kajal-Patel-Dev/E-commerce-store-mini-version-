@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+
+<select onchange="filterCategory(this.value')">
+    <option value="all">All categories</option>
+<option value="all">Electronics</option>
+    <option value="all">Fashion</option>
+</select>
+
+<select onchange="filterPrice(this.value)">
+    <option value="all">All</option>
+    <option value="low">Below 500</option>
+    <option value="mid">500 - 2000</option>
+    <option value="high">Above 2000</option>
+</select>
+
+    <div class="logo">ShopEasy</div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/cart">Cart</a>
+        <a href="/orders">Orders</a>
+        <a href="/login">Login</a>
+         <a href="/register">Register</a>
+    </div>
+</div>
+
+<div class="hero">
+    <h1>Best Deals On Products</h1>
+    <p>Buy latest fashion, electronics & accessories</p>
+</div>
+
+<div class="container">
+
+    <div class="products">
+
+        {% for product in products %}
+
+        <div class="card">
+
+            <img src="{{ product.image }}">
+
+            <div class="card-body">
+
+                <h3>{{ product.name }}</h3>
+
+                <p>{{ product.description }}</p>
+
+                <div class="price">₹{{ product.price }}</div>
+
+                <a href="/product/{{ product.id }}" class="btn">
+                    View Details
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>© 2026 ShopEasy Store</p>
+</div>
+</body>
+</html>

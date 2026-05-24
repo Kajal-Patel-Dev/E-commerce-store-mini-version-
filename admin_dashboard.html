@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Admin Dashboard</h1>
+
+    <br>
+
+    <div class="dashboard">
+
+        <div class="dashboard-card">
+            <h2>{{ products.total_products }}</h2>
+            <p>Total Products</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>{{ users.total_users }}</h2>
+            <p>Total Users</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>{{ orders.total_orders }}</h2>
+            <p>Total Orders</p>
+        </div>
+
+    </div>
+
+    <br><br>
+
+    <a href="/add_product" class="btn">
+        Add Product
+    </a>
+
+</div>
+
+</body>
+</html>

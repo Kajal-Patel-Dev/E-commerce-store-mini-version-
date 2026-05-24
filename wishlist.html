@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wishlist</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>My Wishlist</h1>
+
+    <br>
+
+    <div class="products">
+
+        {% for item in wishlist %}
+
+        <div class="card">
+
+            <img src="{{ item.image }}">
+
+            <div class="card-body">
+
+                <h3>{{ item.name }}</h3>
+
+                <div class="price">
+                    ₹{{ item.price }}
+                </div>
+
+                <a href="/add_to_cart/{{ item.id }}"
+                class="btn">
+                    Add To Cart
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

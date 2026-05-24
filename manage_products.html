@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Manage Products</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Manage Products</h1>
+
+    <br>
+
+    <a href="/add_product"
+    class="btn">
+        Add Product
+    </a>
+
+    <br><br>
+
+    <table class="cart-table">
+
+        <tr>
+
+            <th>ID</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+
+        </tr>
+
+        {% for product in products %}
+
+        <tr>
+
+            <td>{{ product.id }}</td>
+
+            <td>
+                <img src="{{ product.image }}"
+                width="80">
+            </td>
+
+            <td>{{ product.name }}</td>
+
+            <td>₹{{ product.price }}</td>
+
+            <td>
+
+                <a href="/edit_product/{{ product.id }}"
+                class="btn">
+                    Edit
+                </a>
+
+                <a href="/delete_product/{{ product.id }}"
+                class="btn">
+                    Delete
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
